@@ -15,6 +15,8 @@ const styles = StyleSheet.create({
   },
 
   table: {
+    borderTopWidth: 0.5,
+    borderTopColor: '#fff',
     marginTop: 50,
   },
 

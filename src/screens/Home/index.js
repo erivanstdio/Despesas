@@ -1,6 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { View, Text, TextInput } from 'react-native';
 import styles from './styles';
+
+import api from '../../services/api';
 
 import Tuple from '../../components/Tuple';
 
@@ -8,15 +10,31 @@ import Tuple from '../../components/Tuple';
 
 const Home = () => {
 
-  const [addExpense, setAddExpense] = useState(0)
+  const [addExpense, setAddExpense] = useState(2)
   const [editExpense, setEditExpense] = useState(0)
+  const [removeExpense, setRemoveExpense] = useState(2)
 
-  console.log(addExpense)
 
-  function adicionarDespesa(value) {
-    setAddExpense(value)
+  useEffect(() => {
+    // função assíncrona utilizando axios para buscar dados da API Trivia DataBase
+    async function loadApi() {
+      const data = await api.get('expenses')
+        .then(response => {
+          console.log(response.data)
+      });
+       
+    }
+      
+    // chama a função assíncrona
+    loadApi();
+
+  }, [removeExpense])
+
+
+  function removerDespesa() {
     console.log(addExpense)
   }
+
 
   return(
     <View style={styles.container}>
@@ -25,7 +43,7 @@ const Home = () => {
       
       <View style={styles.table}>
 
-        <Tuple />
+        <Tuple onPress={() => removerDespesa()} value="2" title="a" date="20/03/21" />
 
       </View>
     
