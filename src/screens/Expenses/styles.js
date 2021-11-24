@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
   },
 
   table: {
+    flex: 1,
     borderTopWidth: 0.5,
     borderTopColor: '#fff',
   },

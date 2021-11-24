@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Home from '../screens/Home';
 import Expenses from '../screens/Expenses';
+import AddExpense from '../screens/AddExpense';
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
@@ -24,7 +25,10 @@ const AuthRoutes = () => {
         name="Expenses"
         component={Expenses}
       />
-      
+      <Screen 
+        name="AddExpense"
+        component={AddExpense}
+      />
     </Navigator>
   );
 }

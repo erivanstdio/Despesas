@@ -5,10 +5,11 @@ import styles from './styles';
 import api from '../../services/api';
 
 import Tuple from '../../components/Tuple';
+import Button from '../../components/Button';
 
 
 
-const Expenses = () => {
+const Expenses = ({navigation}) => {
 
   const [expenses, setExpenses] = useState([])
   
@@ -32,20 +33,32 @@ const Expenses = () => {
       
     setExpenses([...response.data])
     
-    console.log(expenses)
     setLoading(false)
   }
   
-  function removerDespesa() {
-    console.log(addExpense)
-    setAddExpense(addExpense+1)
+  function removerDespesa(id) {
+    api.delete(`expenses/${id}`).then(res => {
+      loadApi()
+    }).catch(err => {
+      console.log(err)    
+    });
+  }
+
+
+  function adicionarDespesa() {
+
+    navigation.navigate('AddExpense');
+  
   }
 
   return(
     <View style={styles.container}>
       
-      <Text style={styles.screenTitle}>Bem vindo!</Text>
+      <Text style={styles.screenTitle}>Despesas:</Text>
      
+     <Button title="+" buttonTextStyle={{fontSize: 20}} buttonStyle={{marginTop: 20, marginBottom: 10}} onPress={() => adicionarDespesa()}/>
+
+     { /*adicionar view pra fazer o post */ }
       <View style={styles.columnTitleBox}>
         <Text style={styles.columnTitle}>Valor</Text>
         <Text style={[styles.columnTitle, {right: 50}]}>Descrição</Text>
@@ -58,7 +71,7 @@ const Expenses = () => {
           style={styles.flatList}
           data={expenses}
           keyExtractor={ item => String(item._id)}
-          renderItem={ ({item}) => <Tuple onPress={() => removerDespesa()} value={item.value} title={item.item} date={item.date.substr(0,10)} />}
+          renderItem={ ({item}) => <Tuple onPress={() => removerDespesa(item._id)} value={item.value} title={item.item} date={item.date.substr(0,10)} />}
           ListFooterComponent={<Loading load={loading}/>}
         />  
 
