@@ -71,7 +71,7 @@ const Expenses = ({navigation}) => {
           style={styles.flatList}
           data={expenses}
           keyExtractor={ item => String(item._id)}
-          renderItem={ ({item}) => <Tuple onPress={() => removerDespesa(item._id)} value={item.value} title={item.item} date={item.date.substr(0,10)} />}
+          renderItem={ ({item}) => <Tuple onPressRemove={() => removerDespesa(item._id)} value={item.value} title={item.item} date={item.date.substr(0,10)} />}
           ListFooterComponent={<Loading load={loading}/>}
         />  
 

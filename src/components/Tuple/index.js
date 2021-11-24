@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity } from 'react-native';
 
 import styles from './styles';
 
-const Tuple = ({title, value, date, onPress}) => {
+const Tuple = ({title, value, date, onPress, onPressRemove}) => {
   return (
     <View style={styles.container}>
       <View style={styles.value}>
@@ -16,7 +16,7 @@ const Tuple = ({title, value, date, onPress}) => {
       <Text style={styles.text}>{date}</Text>
       </View>
       
-      <TouchableOpacity onPress={onPress} style={styles.buttonBox}>
+      <TouchableOpacity onPress={onPressRemove} style={styles.buttonBox}>
         <Text style={styles.buttonText}>-</Text>
       </TouchableOpacity>
     </View>
