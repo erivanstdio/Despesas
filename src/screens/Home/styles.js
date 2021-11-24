@@ -5,11 +5,18 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-around',
     alignItems: 'center',
-    backgroundColor: '#000'
+    backgroundColor: '#000',
+    paddingVertical: 50,
   },
   text: {
     color: '#fff',
-    fontSize: 20,
+    fontSize: 30,
+  },
+  
+  logo: {
+    height: 180,
+    width: 180,
+    tintColor: '#009900',
   }
 })
 
