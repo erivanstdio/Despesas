@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
   },
 
   dateBox:{
+    alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
     marginTop: 10,
@@ -50,6 +51,7 @@ const styles = StyleSheet.create({
   },
 
   inputDate: {
+    textAlign: 'center',
     width: 50,
     marginTop: 10,
     backgroundColor: '#fff',

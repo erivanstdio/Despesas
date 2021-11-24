@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
   },
 
   inputDate: {
+    textAlign: 'center',
     width: 50,
     marginTop: 10,
     backgroundColor: '#fff',

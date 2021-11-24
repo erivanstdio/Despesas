@@ -39,7 +39,7 @@ const EditExpense = ({navigation, route}) => {
         <TextInput onChangeText={(text) => setValue(text)} keyboardType="numeric" style={styles.inputValue}>{oldValue}</TextInput>
       </View>
       <View style={styles.inputBox}>
-        <Text style={styles.text}>Adicione uma descrição:</Text>
+        <Text style={styles.text}>Descrição da despesa:</Text>
         <TextInput onChangeText={(text) => setDescription(text)} style={styles.inputDescription}>{oldDescription}</TextInput>
       </View>
       <View style={styles.inputBox}>
@@ -60,7 +60,7 @@ const EditExpense = ({navigation, route}) => {
         </View>
       </View>
 
-      <Button title="Adicionar" onPress={() => submitEditExpense(value, description, day, month, year)}/>
+      <Button title="Editar" onPress={() => submitEditExpense(value, description, day, month, year)}/>
     </View>
   );
 }
