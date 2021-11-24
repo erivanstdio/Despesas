@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { View, Text, TextInput } from 'react-native';
 
 import api from '../../services/api';
@@ -13,20 +13,19 @@ const AddExpense = ({navigation}) => {
   const [day, setDay] = useState('')
   const [month, setMonth] = useState('')
   const [year, setYear] = useState('')
-
-
+  
   function submitExpense(valor, description, day, month, year) {
     api.post('expenses', {
       date: `${year}-${month}-${day}`,
       item: `${description}`,
       value: valor,
     }).then(res => {
-      console.log(res)
       navigation.navigate("Home")
     }).catch(err => {
-      console.log(err)    
+      alert('Revise os dados! \n Existe alguma informação inválida.')    
     });
   }
+  
 
   return (
     <View style={styles.container}>

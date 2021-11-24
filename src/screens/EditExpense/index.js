@@ -23,10 +23,9 @@ const EditExpense = ({navigation, route}) => {
       item: `${description}`,
       value: valor,
     }).then(res => {
-      console.log(res)
       navigation.navigate("Home")
     }).catch(err => {
-      console.log(err)    
+      alert('Revise os dados! \n Existe alguma informação inválida.')    
     });
   }
 
