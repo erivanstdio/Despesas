@@ -48,7 +48,7 @@ const Home = () => {
      
       <View style={styles.columnTitleBox}>
         <Text style={styles.columnTitle}>Valor</Text>
-        <Text style={styles.columnTitle}>Descrição</Text>
+        <Text style={[styles.columnTitle, {right: 50}]}>Descrição</Text>
         <Text style={[styles.columnTitle, {right: 75}]}>Data</Text>
       </View>
 
@@ -56,12 +56,10 @@ const Home = () => {
       
         <FlatList
           style={styles.flatList}
-          contentContainerStyle={{ alignItems: 'center'}}
           data={expenses}
           keyExtractor={ item => String(item._id)}
           renderItem={ ({item}) => <Tuple onPress={() => removerDespesa()} value={item.value} title={item.item} date={item.date.substr(0,10)} />}
-          onEndReached={loadApi}
-          onEndReachedThreshold={0.2}
+          ListFooterComponent={<Loading load={loading}/>}
         />  
 
       </View>
@@ -73,7 +71,7 @@ const Home = () => {
 const Loading = ({ load }) => {
   if(!load) return null;
   return(
-    <View style={{paddingBottom: 25}}>
+    <View style={{paddingVertical: 25}}>
       <ActivityIndicator size={25} color="#fff"/>
     </View>
   );
