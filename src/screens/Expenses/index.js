@@ -13,11 +13,6 @@ const Expenses = ({navigation}) => {
 
   const [expenses, setExpenses] = useState([])
   
-  
-  const [addExpense, setAddExpense] = useState(2)
-  const [editExpense, setEditExpense] = useState(0)
-  const [removeExpense, setRemoveExpense] = useState(2)
-
   const [loading, setLoading] = useState(false);
 
 
@@ -46,10 +41,13 @@ const Expenses = ({navigation}) => {
 
 
   function adicionarDespesa() {
-
-    navigation.navigate('AddExpense');
-  
+    navigation.navigate('AddExpense');  
   }
+
+  function editarDespesa(item) {
+    navigation.navigate('EditExpense', {oldId: item._id, oldValue: item.value, oldDescription: item.item});  
+  }
+
 
   return(
     <View style={styles.container}>
@@ -71,7 +69,7 @@ const Expenses = ({navigation}) => {
           style={styles.flatList}
           data={expenses}
           keyExtractor={ item => String(item._id)}
-          renderItem={ ({item}) => <Tuple onPressRemove={() => removerDespesa(item._id)} value={item.value} title={item.item} date={item.date.substr(0,10)} />}
+          renderItem={ ({item}) => <Tuple id={item._id} onPressRemove={() => removerDespesa(item._id)} onPress={() => editarDespesa(item)} value={item.value} title={item.item} date={item.date.substr(0,10)} />}
           ListFooterComponent={<Loading load={loading}/>}
         />  
 

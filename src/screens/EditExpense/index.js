@@ -6,7 +6,9 @@ import Button from '../../components/Button';
 
 import styles from './styles';
 
-const AddExpense = ({navigation}) => {
+const EditExpense = ({navigation, route}) => {
+  
+  const { oldId, oldValue, oldDescription } = route.params
   
   const [value, setValue] = useState(0)
   const [description, setDescription] = useState('')
@@ -14,9 +16,9 @@ const AddExpense = ({navigation}) => {
   const [month, setMonth] = useState('')
   const [year, setYear] = useState('')
 
-
-  function submitExpense(valor, description, day, month, year) {
-    api.post('expenses', {
+  
+  function submitEditExpense(valor, description, day, month, year) {
+    api.put(`expenses/${oldId}`, {
       date: `${year}-${month}-${day}`,
       item: `${description}`,
       value: valor,
@@ -30,22 +32,22 @@ const AddExpense = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Adicionar nova despesa:</Text>
+      <Text style={styles.title}>Editar despesa:</Text>
 
       <View style={styles.inputBox}>
         <Text style={styles.text}>Qual o valor da despesa?</Text>
-        <TextInput onChangeText={(text) => setValue(text)} keyboardType="numeric" style={styles.inputValue}/>
+        <TextInput onChangeText={(text) => setValue(text)} keyboardType="numeric" style={styles.inputValue}>{oldValue}</TextInput>
       </View>
       <View style={styles.inputBox}>
         <Text style={styles.text}>Adicione uma descrição:</Text>
-        <TextInput onChangeText={(text) => setDescription(text)} style={styles.inputDescription}/>
+        <TextInput onChangeText={(text) => setDescription(text)} style={styles.inputDescription}>{oldDescription}</TextInput>
       </View>
       <View style={styles.inputBox}>
         <Text style={styles.text}>A qual data se refere a despesa?</Text>
         <View style={styles.dateBox}>
           <View>
             <Text style={styles.dateText}>Dia</Text>
-            <TextInput  placeholder="DD" maxLength={2} onChangeText={(text) => setDay(text)} keyboardType="numeric" style={styles.inputDate}/>
+            <TextInput  placeholder="DD" maxLength={2} onChangeText={(text) => setDay(text)} keyboardType="numeric" style={styles.inputDate}>{day}</TextInput>
           </View>
           <View>
             <Text style={styles.dateText}>Mês</Text>
@@ -58,9 +60,9 @@ const AddExpense = ({navigation}) => {
         </View>
       </View>
 
-      <Button title="Adicionar" onPress={() => submitExpense(value, description, day, month, year)}/>
+      <Button title="Adicionar" onPress={() => submitEditExpense(value, description, day, month, year)}/>
     </View>
   );
 }
 
-export default AddExpense;
+export default EditExpense;
