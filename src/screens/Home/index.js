@@ -4,11 +4,16 @@ import Button from '../../components/Button';
 
 import styles from './styles';
 
-const Home = () => {
+const Home = ({navigation}) => {
+
+  function handleNavigate() {
+    navigation.navigate('Expenses')
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Centralizado</Text>
-      <Button title="Despesas"/>
+      <Button title="Despesas" onPress={handleNavigate}/>
     </View>
   );
 }
