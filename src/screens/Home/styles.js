@@ -14,11 +14,25 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start'
   },
 
+  columnTitleBox: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginTop: 20,
+    marginVertical: 5,
+  },
+
+  columnTitle: {
+    right: 45,
+    marginHorizontal: 50,
+    color: "#fff",
+    fontSize: 10,
+  },
+
   table: {
     borderTopWidth: 0.5,
     borderTopColor: '#fff',
-    marginTop: 50,
   },
+
 
   title: {
     color: '#fff',
