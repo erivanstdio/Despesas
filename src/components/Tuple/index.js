@@ -1,18 +1,10 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import api from '../../services/api';
 
 import styles from './styles';
 
-const Tuple = ({id, title, value, date, onPress, onPressRemove}) => {
+const Tuple = ({title, value, date, onPress, onPressRemove}) => {
 
-
-  function removerDespesa(id) {
-    api.delete(`expenses/${id}`).then(res => {
-    }).catch(err => {
-      console.log(err)    
-    });
-  }
 
 
   return (
